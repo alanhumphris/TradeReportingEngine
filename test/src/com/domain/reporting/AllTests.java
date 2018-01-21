@@ -10,6 +10,7 @@ import com.domain.reporting.delegate.TradeProcessImplTest;
 import com.domain.reporting.delegate.TradeValidateImplTest;
 import com.domain.reporting.model.EnumCurrencyInfoTest;
 import com.domain.reporting.model.InstructionProcessedTest;
+import com.domain.reporting.report.DTRFromParallelStreamImplTest;
 import com.domain.reporting.report.DTRFromStreamImplTest;
 import com.domain.reporting.service.TradeReportingServiceImplTest;
 import org.junit.runner.RunWith;
@@ -28,6 +29,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	InstructionProcessedTest.class,
         /* Report Tests */
         DTRFromStreamImplTest.class,
+        DTRFromParallelStreamImplTest.class,
         /* Delegate Tests */
         PublishToConsoleImplTest.class,
         TradeProcessImplTest.class,
