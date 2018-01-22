@@ -16,11 +16,13 @@ Glossary of terms:
 - Units: Number of shares to be bought or sold
 
 
-Requires Java 8
+Requires Java 8 as it uses the stream api to create the reports
 
 Main Class:
 com.domain.reporting.app.TradeReportingEngine - this class will run the application and generate the reports with a very minimal set of data.
 
 More extensive test can be run via the JUnit test classes under test/src
+
+test/src/com.domain.reporting.AllTests.java is the complete test suite
 
 
