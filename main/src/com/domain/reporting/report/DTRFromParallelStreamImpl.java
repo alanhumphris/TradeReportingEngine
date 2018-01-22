@@ -119,6 +119,10 @@ public class DTRFromParallelStreamImpl implements DailyTradeReport {
     /**
      * Amount in USD settled everyday by buy/sell flag
      *
+     * Filter the instrument list on tradeDirection
+     * Group by actualSettlementDate
+     * Sum the tradeValueUSD
+     *
      * @param instructions
      * @param tradeDirection
      * @return
@@ -146,6 +150,10 @@ public class DTRFromParallelStreamImpl implements DailyTradeReport {
      * entity foo instructs the highest amount for a buy instruction, then foo
      * is rank 1 for outgoing
      *
+     * Filter the instrument list on tradeDirection
+     * Group by entity
+     * Get the maximum tradeValueUSD
+     * 
      * @param instructions
      * @param tradeDirection
      * @return

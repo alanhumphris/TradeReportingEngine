@@ -5,6 +5,7 @@
  */
 package com.domain.reporting.report;
 
+import com.domain.reporting.BaseTest;
 import com.domain.reporting.report.core.ReportLine;
 import com.domain.reporting.TestDataHelper;
 import com.domain.reporting.model.EnumTradeDirection;
@@ -23,7 +24,7 @@ import org.junit.Test;
  *
  * @author Alan Humphris
  */
-public class DTRFromParallelStreamImplTest {
+public class DTRFromParallelStreamImplTest extends BaseTest {
 
     // used to create large datasets. You will begin to see seem some delay in running tests at 1,000,000 
     private static final Long NUMBER_OF_INSTRUCTIONS_TO_CREATE = 100000L;
@@ -46,7 +47,9 @@ public class DTRFromParallelStreamImplTest {
         Assert.assertNull("Unexpectedly not null for null parameter", result);
 
         result = null;
+      
         result = classUnderTest.generateDailySummary(new ArrayList(), EnumTradeDirection.INCOMING);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List not empty", 0, result.size());
     }
@@ -57,7 +60,9 @@ public class DTRFromParallelStreamImplTest {
         Assert.assertNull("Unexpectedly not null for null parameter", result);
 
         result = null;
+       
         result = classUnderTest.generateDailySummary(new ArrayList(), EnumTradeDirection.OUTGOING);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List not empty", 0, result.size());
     }
@@ -68,7 +73,9 @@ public class DTRFromParallelStreamImplTest {
         Assert.assertNull("Unexpectedly not null for null parameter", result);
 
         result = null;
+        
         result = classUnderTest.generateEntityRanking(new ArrayList(), EnumTradeDirection.INCOMING);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List not empty", 0, result.size());
     }
@@ -79,7 +86,9 @@ public class DTRFromParallelStreamImplTest {
         Assert.assertNull("Unexpectedly not null for null parameter", result);
 
         result = null;
+
         result = classUnderTest.generateEntityRanking(new ArrayList(), EnumTradeDirection.OUTGOING);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List not empty", 0, result.size());
     }
@@ -93,6 +102,7 @@ public class DTRFromParallelStreamImplTest {
         data.add(TestDataHelper.INSTRUCTION_PROCESSED_AED_1);
 
         result = classUnderTest.generateDailySummary(data, EnumTradeDirection.INCOMING);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List size incorrect", 1, result.size());
         Assert.assertEquals("List size incorrect", new Double(14899.5), result.values().iterator().next());
@@ -107,6 +117,7 @@ public class DTRFromParallelStreamImplTest {
         data.add(TestDataHelper.INSTRUCTION_PROCESSED_AED_1);
 
         result = classUnderTest.generateDailySummary(data, EnumTradeDirection.OUTGOING);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List size incorrect", 1, result.size());
         Assert.assertEquals("List size incorrect", new Double(10025.0), result.values().iterator().next());
@@ -121,6 +132,7 @@ public class DTRFromParallelStreamImplTest {
         data.add(TestDataHelper.INSTRUCTION_PROCESSED_AED_1);
 
         result = classUnderTest.generateEntityRanking(data, EnumTradeDirection.INCOMING);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List size incorrect", 1, result.size());
         Assert.assertEquals("Expected value incorrect", new Double(14899.5), result.values().iterator().next().get().getTradeValueUSD());
@@ -135,6 +147,7 @@ public class DTRFromParallelStreamImplTest {
         data.add(TestDataHelper.INSTRUCTION_PROCESSED_AED_1);
 
         result = classUnderTest.generateEntityRanking(data, EnumTradeDirection.OUTGOING);
+         
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List size incorrect", 1, result.size());
         Assert.assertEquals("Expected value incorrect", new Double(10025.0), result.values().iterator().next().get().getTradeValueUSD());
@@ -148,7 +161,9 @@ public class DTRFromParallelStreamImplTest {
         Assert.assertEquals("List not empty", 3, result.size());
 
         result = null;
+        
         result = classUnderTest.dailySettlementIncomingSummary(new ArrayList());
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List not empty", 3, result.size());
     }
@@ -162,7 +177,9 @@ public class DTRFromParallelStreamImplTest {
         Assert.assertEquals("List not empty", 3, result.size());
 
         result = null;
+        
         result = classUnderTest.dailySettlementOutgoingSummary(new ArrayList());
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List not empty", 3, result.size());
     }
@@ -175,7 +192,9 @@ public class DTRFromParallelStreamImplTest {
         Assert.assertEquals("List not empty", 3, result.size());
 
         result = null;
+        
         result = classUnderTest.entityRanking(new ArrayList());
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List not empty", 3, result.size());
     }
@@ -190,6 +209,7 @@ public class DTRFromParallelStreamImplTest {
         data.add(TestDataHelper.INSTRUCTION_PROCESSED_AED_1);
 
         result = classUnderTest.dailySettlementIncomingSummary(data);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List size incorrect", 3, result.size());
         Assert.assertEquals("List size incorrect", "14899.50", result.get(1).reportChecksum());
@@ -205,6 +225,7 @@ public class DTRFromParallelStreamImplTest {
         data.add(TestDataHelper.INSTRUCTION_PROCESSED_AED_1);
 
         result = classUnderTest.dailySettlementOutgoingSummary(data);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List size incorrect", 3, result.size());
         Assert.assertEquals("List size incorrect", "10025.00", result.get(1).reportChecksum());
@@ -220,6 +241,7 @@ public class DTRFromParallelStreamImplTest {
         data.add(TestDataHelper.INSTRUCTION_PROCESSED_AED_1);
 
         result = classUnderTest.entityRanking(data);
+        
         Assert.assertNotNull("Unexpectedly null for new ArrayList() parameter", result);
         Assert.assertEquals("List size incorrect", 7, result.size());
         Assert.assertEquals("List size incorrect", "10025.00", result.get(2).reportChecksum());
@@ -231,7 +253,13 @@ public class DTRFromParallelStreamImplTest {
         Map<LocalDate, Double> result = null;
         List<InstructionProcessed> data = TestDataHelper.generateRandomData(NUMBER_OF_INSTRUCTIONS_TO_CREATE).getProcessedInstructions();
 
+        long startTime = System.currentTimeMillis();
+        
         result = classUnderTest.generateDailySummary(data, EnumTradeDirection.INCOMING);
+        
+        long endTime = System.currentTimeMillis();
+        displayTimeDiff(DTRFromParallelStreamImpl.class, "generateDailySummary Incoming", startTime,endTime);
+
         Assert.assertNotNull("Unexpectedly null", result);
     }
 
@@ -240,7 +268,13 @@ public class DTRFromParallelStreamImplTest {
         Map<LocalDate, Double>  result = null;
         List<InstructionProcessed> data = TestDataHelper.generateRandomData(NUMBER_OF_INSTRUCTIONS_TO_CREATE).getProcessedInstructions();
 
+        long startTime = System.currentTimeMillis();
+        
         result = classUnderTest.generateDailySummary(data, EnumTradeDirection.OUTGOING);
+        
+        long endTime = System.currentTimeMillis();
+        displayTimeDiff(DTRFromParallelStreamImpl.class, "generateDailySummary Outgoing", startTime,endTime);
+
         Assert.assertNotNull("Unexpectedly null", result);
     }
 
@@ -249,7 +283,13 @@ public class DTRFromParallelStreamImplTest {
         Map<String, Optional<InstructionProcessed>> result = null;
         List<InstructionProcessed> data = TestDataHelper.generateRandomData(NUMBER_OF_INSTRUCTIONS_TO_CREATE).getProcessedInstructions();
 
+        long startTime = System.currentTimeMillis();
+        
         result = classUnderTest.generateEntityRanking(data, EnumTradeDirection.INCOMING);
+        
+        long endTime = System.currentTimeMillis();
+        displayTimeDiff(DTRFromParallelStreamImpl.class, "generateEntityRanking Incoming", startTime,endTime);
+
         Assert.assertNotNull("Unexpectedly null", result);
     }
     
@@ -258,7 +298,13 @@ public class DTRFromParallelStreamImplTest {
         Map<String, Optional<InstructionProcessed>> result = null;
         List<InstructionProcessed> data = TestDataHelper.generateRandomData(NUMBER_OF_INSTRUCTIONS_TO_CREATE).getProcessedInstructions();
 
+        long startTime = System.currentTimeMillis();
+        
         result = classUnderTest.generateEntityRanking(data, EnumTradeDirection.OUTGOING);
+        
+        long endTime = System.currentTimeMillis();
+        displayTimeDiff(DTRFromParallelStreamImpl.class, "generateEntityRanking Outgoing", startTime,endTime);
+
         Assert.assertNotNull("Unexpectedly null", result);
     }
 

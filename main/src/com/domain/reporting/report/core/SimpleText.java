@@ -9,9 +9,9 @@ package com.domain.reporting.report.core;
  *
  * @author Alan Humphris
  */
-public class SimpleText extends ReportLine {
+public final class SimpleText extends ReportLine {
 
-    private String header;
+    private final String header;
 
     public SimpleText(String header) {
         this.header = header;
@@ -25,6 +25,11 @@ public class SimpleText extends ReportLine {
     @Override
     public String reportChecksum() {
         return "0";
+    }
+    
+    @Override
+    public Boolean isDataLine() {
+        return Boolean.FALSE;
     }
     
 }

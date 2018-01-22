@@ -5,8 +5,6 @@
  */
 package com.domain.reporting.model;
 
-import java.time.LocalDate;
-
 /**
  *
  * @author Alan Humphris

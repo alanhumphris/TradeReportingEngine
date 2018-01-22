@@ -15,6 +15,9 @@ Glossary of terms:
 - Agreed Fx is the foreign exchange rate with respect to USD that was agreed
 - Units: Number of shares to be bought or sold
 
+
+Requires Java 8
+
 Main Class:
 com.domain.reporting.app.TradeReportingEngine - this class will run the application and generate the reports with a very minimal set of data.
 

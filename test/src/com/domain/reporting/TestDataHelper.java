@@ -9,6 +9,8 @@ import com.domain.reporting.model.Instruction;
 import com.domain.reporting.model.InstructionProcessed;
 import com.domain.reporting.model.InstructionValidated;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -33,20 +35,29 @@ public class TestDataHelper {
     public static final InstructionProcessed INSTRUCTION_PROCESSED_SAR_1 = new InstructionProcessed(INSTRUCTION_SAR_1);
     public static final InstructionProcessed INSTRUCTION_PROCESSED_USD_1 = new InstructionProcessed(INSTRUCTION_USD_1);
 
+    /**
+     * Generate instructions with random data
+     *
+     * @param numberOfInstructions how many instructions to create
+     * @return
+     */
     public static DataHolder generateRandomData(Long numberOfInstructions) {
-        DataHolder dataHolder = new DataHolder();
         Random rand = new Random();
         final String entitySuffix = "ABCDEFGH";
 
-        for (int i = 0; i < numberOfInstructions - 1; i++) { 
+        List<Instruction> instructions = new ArrayList();
+        List<InstructionValidated> validatedInstructions = new ArrayList();
+        List<InstructionProcessed> processedInstructions = new ArrayList();
+
+        for (int i = 0; i < numberOfInstructions - 1; i++) {
             String entityName = "Entity" + entitySuffix.charAt(rand.nextInt(8));
-            String buySellFlag = (rand.nextInt(2) > 0)? "B" : "S";
+            String buySellFlag = (rand.nextInt(2) > 0) ? "B" : "S";
             String currencyCode = generateCurrencyCode(rand);
             Double agreedFx = generateAgreedFx(currencyCode);
             LocalDate instructionDate = LocalDate.of(2018, 1, 1 + rand.nextInt(7));
             LocalDate settlementDate = LocalDate.of(2018, 1, 8 + rand.nextInt(7));
             Long units = new Long(1 + rand.nextInt(50000));
-            Double pricePerUnit = (1 + rand.nextInt(10000))/100.0;
+            Double pricePerUnit = (1 + rand.nextInt(10000)) / 100.0;
 
             Instruction instruction = new Instruction(
                     entityName,
@@ -58,10 +69,12 @@ public class TestDataHelper {
                     units,
                     pricePerUnit);
 
-            dataHolder.getInstructions().add(instruction);
-            //dataHolder.getValidatedInstructions().add(new InstructionValidated(instruction));
-            dataHolder.getProcessedInstructions().add(new InstructionProcessed(instruction));
+            instructions.add(instruction);
+            //validatedInstructions.add(new InstructionValidated(instruction));
+            processedInstructions.add(new InstructionProcessed(instruction));
         }
+
+        DataHolder dataHolder = new DataHolder(instructions, validatedInstructions, processedInstructions);
 
         return dataHolder;
     }
@@ -69,31 +82,31 @@ public class TestDataHelper {
     protected static String generateCurrencyCode(Random rand) {
         String result = "USD";
         int codeNo = rand.nextInt(10);
-        
+
         if (codeNo < 3) {
-           result = "USD";
+            result = "USD";
         } else if (codeNo < 7) {
-           result = "XYZ";
+            result = "XYZ";
         } else if (codeNo < 8) {
-           result = "AED";
+            result = "AED";
         } else {
-           result = "SAR";
+            result = "SAR";
         }
 
         return result;
     }
-    
+
     protected static Double generateAgreedFx(String currencyCode) {
         Double result = 1.0;
-        
+
         if ("XYZ".equals(currencyCode)) {
-           result = 1.3;
+            result = 1.3;
         } else if ("AED".equals(currencyCode)) {
-           result = .22;
+            result = .22;
         } else if ("SAR".equals(currencyCode)) {
-           result = .27;
+            result = .27;
         } else {
-           result = 1.0;
+            result = 1.0;
         }
 
         return result;

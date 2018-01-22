@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
  *
  * @author Alan Humphris
  */
-public class EntityRankingReportLine extends ReportLine {
+public final class EntityRankingReportLine extends ReportLine {
     
     private final String entityName;
     private final Double tradeValue;
@@ -57,4 +57,10 @@ public class EntityRankingReportLine extends ReportLine {
         
         return result.toString();
     }
+
+    @Override
+    public Boolean isDataLine() {
+        return Boolean.TRUE;
+    }
+    
 }

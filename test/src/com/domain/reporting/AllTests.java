@@ -9,6 +9,7 @@ import com.domain.reporting.delegate.PublishToConsoleImplTest;
 import com.domain.reporting.delegate.TradeProcessImplTest;
 import com.domain.reporting.delegate.TradeValidateImplTest;
 import com.domain.reporting.model.EnumCurrencyInfoTest;
+import com.domain.reporting.model.EnumTradeDirectionTest;
 import com.domain.reporting.model.InstructionProcessedTest;
 import com.domain.reporting.report.DTRFromParallelStreamImplTest;
 import com.domain.reporting.report.DTRFromStreamImplTest;
@@ -26,6 +27,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
 	/* Model Tests */
 	EnumCurrencyInfoTest.class,
+        EnumTradeDirectionTest.class,
 	InstructionProcessedTest.class,
         /* Report Tests */
         DTRFromStreamImplTest.class,

@@ -14,4 +14,6 @@ abstract public class ReportLine {
     abstract public String reportLine();
     
     abstract public String reportChecksum();
+    
+    abstract public Boolean isDataLine();
 }

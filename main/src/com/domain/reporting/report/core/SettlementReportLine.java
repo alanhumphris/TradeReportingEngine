@@ -14,12 +14,12 @@ import java.time.LocalDate;
  *
  * @author Alan Humphris
  */
-public class SettlementReportLine extends ReportLine {
+public final class SettlementReportLine extends ReportLine {
     
-    private LocalDate settlementDate;
-    private Double tradeValue;
-    private EnumCurrencyInfo currency;
-    private EnumTradeDirection tradeDirection;
+    private final LocalDate settlementDate;
+    private final Double tradeValue;
+    private final EnumCurrencyInfo currency;
+    private final EnumTradeDirection tradeDirection;
 
     public SettlementReportLine(LocalDate settlementDate, Double tradeValue, EnumCurrencyInfo currency, EnumTradeDirection tradeDirection) {
         this.settlementDate = settlementDate;
@@ -64,5 +64,10 @@ public class SettlementReportLine extends ReportLine {
         result.append(getCurrency().getCurrencyCode());
         
         return result.toString();
+    }
+    
+    @Override
+    public Boolean isDataLine() {
+        return Boolean.TRUE;
     }
 }

@@ -9,7 +9,7 @@ package com.domain.reporting.report.core;
  *
  * @author Alan Humphris
  */
-public class BlankLine extends ReportLine {
+public final class BlankLine extends ReportLine {
     
     @Override
     public String reportLine() {
@@ -20,4 +20,10 @@ public class BlankLine extends ReportLine {
     public String reportChecksum() {
         return "0";
     }
+
+    @Override
+    public Boolean isDataLine() {
+        return Boolean.FALSE;
+    }
+    
 }
